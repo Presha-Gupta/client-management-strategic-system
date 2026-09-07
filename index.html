@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Client Engagement Methodology</title>
+    <meta property="og:title" content="Strategic Client Engagement Methodology">
+    <meta property="og:description" content="A 5-stage framework for delivering geopolitical risk analysis and strategic advisory to government and institutional clients.">
+    <meta property="og:url" content="https://client-managment-system.netlify.app/">
+    <meta property="og:type" content="website">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            color: #1a1a1a;
+        }
+
+        .flow-container {
+            position: relative;
+        }
+
+        .methodology-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 28px;
+            color: #ddd;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -0.5rem 0;
+        }
+
+        .stage-card {
+            display: flex;
+            flex-direction: column;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .stage-card:hover {
+            border-color: #999;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+
+        .stage-image {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .stage-image.laptop {
+            object-position: center bottom;
+        }
+
+        .stage-info {
+            padding: 2rem;
+        }
+
+        .stage-number {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 0.5rem;
+        }
+
+        .stage-title {
+            font-size: 22px;
+            font-weight: 500;
+            color: #1a1a1a;
+            margin-bottom: 0.75rem;
+        }
+
+        .stage-subtitle {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .parallel-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 2rem;
+        }
+
+        .parallel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .parallel-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .parallel-card:hover {
+            border-color: #999;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .parallel-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .optional-card {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .optional-card:hover {
+            border-color: #999;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .optional-title {
+            font-size: 18px;
+            font-weight: 500;
+            color: #1a1a1a;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 700px;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            font-size: 28px;
+            color: #999;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .close:hover {
+            color: #1a1a1a;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            margin-right: 2rem;
+        }
+
+        .modal-body {
+            font-size: 15px;
+            color: #333;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+
+        .modal-body p {
+            margin-bottom: 1.2rem;
+        }
+
+        .modal-body strong {
+            color: #1a1a1a;
+        }
+
+        .modal-impact {
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .modal-impact strong {
+            color: #1a1a1a;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .parallel-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .stage-image {
+                height: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Strategic Client Engagement Methodology</h1>
+        </div>
+
+        <div class="flow-container">
+            <div class="methodology-flow">
+                <div class="stage-card" onclick="openModal('stage1')">
+                    <img src="images/image_1.png" alt="Stage 1" class="stage-image">
+                    <div class="stage-info">
+                        <div class="stage-number">Stage 1</div>
+                        <div class="stage-title">Absorb Before Acting</div>
+                        <div class="stage-subtitle">Deep listening and context mapping</div>
+                    </div>
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="stage-card" onclick="openModal('stage2')">
+                    <img src="images/image_2.png" alt="Stage 2" class="stage-image">
+                    <div class="stage-info">
+                        <div class="stage-number">Stage 2</div>
+                        <div class="stage-title">Diagnose the Landscape</div>
+                        <div class="stage-subtitle">Map root causes and implications</div>
+                    </div>
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="stage-card" onclick="openModal('stage3')">
+                    <img src="images/image_3.png" alt="Stage 3" class="stage-image">
+                    <div class="stage-info">
+                        <div class="stage-number">Stage 3</div>
+                        <div class="stage-title">Map Constraints</div>
+                        <div class="stage-subtitle">Identify decision boundaries</div>
+                    </div>
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="stage-card" onclick="openModal('stage4')">
+                    <img src="images/image_4.png" alt="Stage 4" class="stage-image laptop">
+                    <div class="stage-info">
+                        <div class="stage-number">Stage 4</div>
+                        <div class="stage-title">Validate Approach</div>
+                        <div class="stage-subtitle">Brief, test, refine, lock</div>
+                    </div>
+                </div>
+
+                <div class="arrow">↓</div>
+
+                <div class="stage-card" onclick="openModal('stage5')">
+                    <img src="images/image_5.png" alt="Stage 5" class="stage-image">
+                    <div class="stage-info">
+                        <div class="stage-number">Stage 5</div>
+                        <div class="stage-title">Execute & Deliver</div>
+                        <div class="stage-subtitle">Real-time guidance and results</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parallel-section">
+            <div class="section-label">Continuous During Stages 4-5</div>
+            <div class="parallel-grid">
+                <div class="parallel-card" onclick="openModal('parallel1')">
+                    <div class="parallel-title">Handle Ambiguity Actively</div>
+                </div>
+                <div class="parallel-card" onclick="openModal('parallel2')">
+                    <div class="parallel-title">Read Emotion Behind Demands</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="parallel-section">
+            <div class="section-label">Beyond Initial Engagement</div>
+            <div class="optional-card" onclick="openModal('renewal')">
+                <div class="optional-title">Renewal & Ongoing Relationship</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">&times;</button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        const content = {
+            stage1: {
+                title: "Stage 1: Absorb Before Acting",
+                body: "The foundation of substantive work is diagnostic precision. Rather than moving to solutions prematurely, I develop a comprehensive understanding of the client's situation—their organizational context, decision-making structures, historical constraints, and unstated concerns.\n\nI conduct a structured discovery audit that moves beyond operational checkboxes. Through calibrated open-ended inquiry, I identify what actually matters: the strategic pressures your leadership privately anticipates, how your decision apparatus absorbs difficult intelligence, the gaps between formal position and operational reality.\n\nPsychology operates as a strategic vector in high-stakes environments. I need to understand not what clients say they fear, but what actually constrains their options: institutional precedent, political exposure, competitive vulnerability, reputational costs. Building genuine working rapport—real understanding of the people making decisions—is operational necessity.\n\nI develop a bespoke operational profile: I map unstated anxieties and log specific preferences that shape engagement. This includes communication protocols—whether leadership absorbs analysis through brief summaries or comprehensive assessments—treating cognitive load as a strategic asset.\n\nThe outcome is twofold: an accurate baseline assessment that identifies root drivers, not symptoms. And genuine strategic alignment—where leadership transitions from managed disclosure to substantive dialogue.",
+                impact: "Shared situational understanding and a customized engagement architecture that structures all subsequent analysis."
+            },
+            stage2: {
+                title: "Stage 2: Diagnose the Full Problem Landscape",
+                body: "Diagnosis requires systematic decomposition. I map the problem architecture—not as isolated symptoms, but as an interconnected system of root causes, cascading effects, and second-order implications.\n\nI isolate the causal drivers of your exposure and assess their direct impact on your organization's core operations, strategic position, and institutional equities. Simultaneously, I establish temporal severity: what demands immediate operational response versus what requires forward planning.\n\nI conduct historical precedent analysis—identifying whether similar configurations have materialized before, how institutions navigated them, and which interventions succeeded or failed. This prevents solving novel problems using outdated frameworks.\n\nI map propagation pathways: how initial pressures distribute through your ecosystem. I distinguish what cannot be reversed from what retains strategic optionality.\n\nI identify critical stakeholders and exposure vectors—which internal constituencies absorb the greatest risk, where operational vulnerabilities concentrate, and which decision-points remain under your influence.\n\nI act as an intelligent filter: extracting what matters to your specific exposure from dense intelligence, personalizing analysis to your decision context. I maintain continuous monitoring—reaching out with relevant intelligence even when immediate action isn't required.\n\nI present this architecture in formats aligned to client needs—analytic briefs, scenario matrices, or structured dialogue.",
+                impact: "A shared strategic map of the problem, its propagation vectors, your remaining options, and the sequence of decisions required."
+            },
+            stage3: {
+                title: "Stage 3: Map Constraints & Prepare for Crisis",
+                body: "Strategic options exist within boundaries. I systematically identify the structural constraints framing your decision space: legal and regulatory limits, operational capacity thresholds, political vulnerability, acceptable risk tolerance, reputational precedent, alliance dependencies, and temporal windows.\n\nSome constraints are absolute—regulatory red lines, legal prohibitions, irreversible commitments. Others are conditional—carrying elevated risk but theoretically executable. Still others are temporal—moments when action remains viable versus points of no return.\n\nI identify which internal constituencies can execute required decisions, whether your organization possesses requisite capabilities, and where external stakeholders retain veto power or influence.\n\nI map the decision architecture—which choices remain under your control, which are now foreclosed, which require coordination across multiple actors, and which have accelerating timelines.\n\nThis constraint landscape is shared in formats you prefer—brief analytic summaries or structured mapping—establishing clarity on what's strategically viable before testing approaches or committing resources.\n\nCrisis Anchoring: When unpredictable disruption occurs, I activate immediate response. I validate your organization's urgency, establish measured de-escalation, and shift the narrative from chaos to command. I deliver rapid triage: what happened, what it means immediately, and what we are tracking next.",
+                impact: "A precise understanding of your decision boundaries, remaining strategic options, and rapid-response capability during acute disruption."
+            },
+            stage4: {
+                title: "Stage 4: Develop and Validate Strategic Approach",
+                body: "Strategic approaches must be stress-tested before deployment. I develop a coherent strategic framework addressing the identified problem within mapped constraints. This is operationally executable given your organizational capacity, decision authority, and temporal windows.\n\nI brief the approach to your leadership, contextualizing how it addresses root causes and mitigates exposure. I solicit live feedback: where does the approach miss institutional realities or create unintended friction? I calibrate based on feedback, refining sequencing, stakeholder engagement, and resource allocation.\n\nOnce aligned, the approach is locked and ready for execution.",
+                impact: "A validated, operationally coherent approach with full organizational alignment and clear execution readiness."
+            },
+            stage5: {
+                title: "Stage 5: Execute and Deliver Results",
+                body: "Execution requires continuous communication and real-time intelligence. Daily briefings monitor emerging developments affecting your operations, tailored research reports address emerging risks, and scenario analysis clarifies how conditions evolve.\n\nSpecific courses of action are recommended directly—what to do next, sequencing of decisions, and timing. Stakeholder alignment mechanics guide how to coordinate across your government, allies, and internal constituencies to ensure execution holds. Implementation checkpoints verify whether strategy is tracking as forecasted at critical junctures.\n\nConcrete risk metrics and quantitative assessments measure outcomes: where exposures are declining, stakeholder coordination is holding, external conditions track as forecasted. Contingency direction activates immediately when execution hits unexpected obstacles—alternative approaches, rapid course correction, immediate next steps.\n\nStrategic guidance addresses specific decisions. Direct access to analysis through ongoing engagement with your leadership ensures your organization understands implications and can respond coherently as circumstances shift.",
+                impact: "Measured risk reduction and informed decision-making grounded in continuous intelligence, specific direction, and real-time course correction."
+            },
+            parallel1: {
+                title: "Handle Ambiguity Actively",
+                body: "When execution surfaces unclear terrain—unknowns that block decision-making, information gaps that require judgment calls—I don't defer or stall. I return to the client to test assumptions. I research historical precedent. I consult relevant experts. I maintain active engagement with the problem until ambiguity clarifies into actionable intelligence.\n\nThe defining discipline is patience—with both the problem and the client. Complex strategic environments rarely produce clean answers. Your willingness to sit in ambiguity, explore multiple angles, and maintain forward momentum is what builds trust and produces breakthrough decisions.",
+                impact: "Execution that navigates uncertainty without stalling, and leadership that remains confident and aligned through unexpected disruption."
+            },
+            parallel2: {
+                title: "Read Emotion Behind Demands",
+                body: "When your organization surfaces requests that seem unrealistic or misaligned with strategy, the underlying demand is rarely the actual issue. Something is driving urgency: institutional pressure, political exposure, fear of missed windows, stakeholder panic.\n\nI identify what's actually driving the ask. Then I either align your approach to address the real concern, or I ground the request in past precedent and realistic timelines. The key is not pushing back on the surface demand, but addressing what's generating it.\n\nThis separates advisors from consultants. Anyone can say no. Understanding what's actually being asked—beneath the stated ask—is where value emerges.",
+                impact: "Execution that navigates complexity without losing momentum, and leadership that remains confident through disruption."
+            },
+            renewal: {
+                title: "Renewal & Ongoing Relationship",
+                body: "Once initial strategic objectives are achieved, the relationship architecture evolves. A value realization review documents every intervention, crisis mitigated, and hour of executive time preserved through anticipatory intelligence. This is not an invoice—it is evidence of embedded strategic value.\n\nSystematic touchpoints maintain strategic presence without intrusion. As your organization evolves—leadership transitions, new policy cycles, emerging strategic initiatives—targeted intelligence reaches relevant stakeholders at the moment it matters most. You receive updates on developments affecting your sector, emerging opportunities, and shifting stakeholder landscapes before they become urgent.\n\nOngoing stakeholder mapping tracks how your organization's decision-making structure and priorities evolve. This informs where opportunities for expanded engagement naturally emerge—new policy areas requiring assessment, new markets requiring risk analysis, emerging vulnerabilities requiring proactive mitigation.\n\nThe relationship compounds rather than concludes. You remain embedded as a continuous strategic asset, positioned to support recurring decisions and emerging challenges as your organization's operating environment shifts.",
+                impact: "Preserved institutional knowledge, demonstrated track record, and a foundation for recurring strategic partnership."
+            }
+        };
+
+        function openModal(id) {
+            const data = content[id];
+            const html = `
+                <div class="modal-title">${data.title}</div>
+                <div class="modal-body">${data.body.split('\n\n').map(p => `<p>${p}</p>`).join('')}</div>
+                <div class="modal-impact"><strong>Impact:</strong> ${data.impact}</div>
+            `;
+            document.getElementById('modalBody').innerHTML = html;
+            document.getElementById('modal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        document.getElementById('modal').addEventListener('click', function(e) {
+            if(e.target === this) closeModal();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if(e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>
